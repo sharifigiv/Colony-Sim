@@ -17,14 +17,21 @@ class Human:
     def fight(self, Person):
         if Person != None and Person.isAlive:
             if Person.colony.name != self.colony.name:
-                print('Started a war')
                 if Person.strenght >= self.strenght:
                     self.kill()
-                    print(self.colony.name, 'Lost a War!')
+
+                    self.colony.area.remove([self.x, self.y])
+                    Person.colony.area.append([self.x, self.y])
+
+                    return False
 
                 else:
                     Person.kill()
-                    print(self.colony.name, 'Won a War!')
+
+                    Person.colony.area.remove([Person.x, Person.y])
+                    self.colony.are.append([Person.x, Person.y])
+
+                    return True
 
     def kill(self):
         self.isAlive = False
@@ -61,6 +68,6 @@ class Human:
         if self.isDiseased:
             self.age *= 1.5
 
-        if self.productionrate > 40:
+        if self.productionrate > 30:
             child = self.bread()
             self.colony.add_people(child)
