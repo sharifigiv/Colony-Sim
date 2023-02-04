@@ -3,6 +3,7 @@ from random import randint
 class World:
     def __init__(self, x, y, width, height):
         self.all_people = []
+        self.colonies = []
 
         self.x = x
         self.y = y
