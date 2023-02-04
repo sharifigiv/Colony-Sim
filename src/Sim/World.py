@@ -1,3 +1,5 @@
+from random import randint
+
 class World:
     def __init__(self, x, y, width, height):
         self.all_people = []
@@ -26,3 +28,13 @@ class World:
         for p in self.all_people:
             if p.x == x and p.y == y:
                 return p
+
+    def random_pos(self):
+        random_x = randint(0, self.width)
+        random_y = randint(0, self.height)
+
+        while not self.check_place(random_x, random_y):
+            random_x = randint(0, self.width)
+            random_y = randint(0, self.height)
+
+        return random_x, random_y
