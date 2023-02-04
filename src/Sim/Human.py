@@ -15,15 +15,21 @@ class Human:
         self.colony = colony
 
     def fight(self, Person):
-        if Person.colony != self.colony:
-            if Person.strenght >= self.strenght:
-                self.kill()
+        if Person != None and Person.isAlive:
+            if Person.colony.name != self.colony.name:
+                print('Started a war')
+                if Person.strenght >= self.strenght:
+                    self.kill()
+                    print(self.colony.name, 'Lost a War!')
 
-            else:
-                Person.kill()
+                else:
+                    Person.kill()
+                    print(self.colony.name, 'Won a War!')
 
     def kill(self):
         self.isAlive = False
+        self.colony.people.remove(self)
+        self.colony.world.all_people.remove(self)
 
     def make_sick(self):
         self.isDiseased = True
@@ -41,7 +47,7 @@ class Human:
             else:
                 child_disease = True
 
-        child = Human(self.x, self.y + 7, self.strenght, child_disease, self.colony)
+        child = Human(self.x, self.y + 5, self.strenght, child_disease, self.colony)
 
         return child
 
@@ -50,7 +56,6 @@ class Human:
         self.productionrate += 0.01
 
         if self.age > self.strenght:
-            print('Dead at age', self.age)
             self.kill()
 
         if self.isDiseased:
