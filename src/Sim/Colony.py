@@ -24,29 +24,33 @@ class Colony:
                     person.x -= 5
                     
                 else:
-                    if self.world.check_place(person.x - 5, person.y):
-                        person.fight(self.world.get_person(person.x - 5, person.y))
+                    if self.world.exists(person.x - 5, person.y):
+                        if not self.world.check_place(person.x - 5, person.y):
+                            person.fight(self.world.get_person(person.x - 5, person.y))
 
             if direction == 2:
                 if self.world.check_place(person.x + 5, person.y):
                     person.x += 5
 
                 else:
-                    if self.world.check_place(person.x + 5, person.y):
-                        person.fight(self.world.get_person(person.x + 5, person.y))
+                    if self.world.exists(person.x + 5, person.y):
+                        if not self.world.check_place(person.x + 5, person.y):
+                            person.fight(self.world.get_person(person.x + 5, person.y))
 
             if direction == 3:
                 if self.world.check_place(person.x, person.y - 5):
                     person.y -= 5
 
                 else:
-                    if self.world.check_place(person.x, person.y - 5):
-                        person.fight(self.world.get_person(person.x, person.y - 5))
+                    if self.world.exists(person.x, person.y - 5):
+                        if not self.world.check_place(person.x, person.y - 5):
+                            person.fight(self.world.get_person(person.x, person.y - 5))
 
             if direction == 4:
                 if self.world.check_place(person.x, person.y + 5):
                     person.y += 5
 
                 else:
-                    if self.world.check_place(person.x, person.y + 5):
-                        person.fight(self.world.get_person(person.x, person.y + 5))
+                    if self.world.exists(person.x, person.y + 5):
+                        if not self.world.check_place(person.x, person.y + 5):
+                            person.fight(self.world.get_person(person.x, person.y + 5))

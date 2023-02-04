@@ -29,6 +29,12 @@ class World:
             if p.x == x and p.y == y:
                 return p
 
+    def exists(self, x, y):
+        if x >= self.x and x <= self.width + self.x and y >= self.y and y <= self.height + self.y:
+            return True
+
+        return False
+
     def random_pos(self):
         random_x = randint(0, self.width)
         random_y = randint(0, self.height)
