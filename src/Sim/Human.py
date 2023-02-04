@@ -5,6 +5,7 @@ class Human:
         self.x = x
         self.y = y
 
+        self.age = 0
         self.strenght = strenght
         self.productionrate = 0
 
@@ -40,16 +41,21 @@ class Human:
             else:
                 child_disease = True
 
-        child = Person(self.x, self.y + 7, self.strenght, child_disease, self.colony)
+        child = Human(self.x, self.y + 7, self.strenght, child_disease, self.colony)
 
         return child
 
     def update(self):
-        self.age += 1
-        self.productionrate += 1
+        self.age += 0.01
+        self.productionrate += 0.01
 
         if self.age > self.strenght:
+            print('Dead at age', self.age)
             self.kill()
 
         if self.isDiseased:
             self.age *= 1.5
+
+        if self.productionrate > 40:
+            child = self.bread()
+            self.colony.add_people(child)
