@@ -10,6 +10,8 @@ class Colony:
 
     def add_people(self, Person):
         self.people.append(Person)
+        self.world.new_people(Person)
+
         Person.colony = self.name
 
     def update():
@@ -22,25 +24,25 @@ class Colony:
                     person.x -= 5
                     
                 else:
-                    person.fight(self.worlf.get_person(self.x - 5, self.y))
+                    person.fight(self.world.get_person(self.x - 5, self.y))
 
             if direction == 2:
                 if self.world.check_place(self.x + 5, self.y):
                     person.x += 5
 
                 else:
-                    person.fight(self.worlf.get_person(self.x, self.y + 5))
+                    person.fight(self.world.get_person(self.x, self.y + 5))
 
             if direction == 3:
                 if self.world.check_place(self.x, self.y - 5):
                     person.y -= 5
 
                 else:
-                    person.fight(self.worlf.get_person(self.x, self.y - 5))
+                    person.fight(self.world.get_person(self.x, self.y - 5))
 
             if direction == 4:
                 if self.world.check_place(self.x, self.y + 5):
                     person.y += 5
 
                 else:
-                    person.fight(self.worlf.get_person(self.x, self.y + 5))
+                    person.fight(self.world.get_person(self.x, self.y + 5))
