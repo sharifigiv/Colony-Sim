@@ -3,9 +3,7 @@ import pyray as pr
 import time
 from random import choice
 
-
 pr.init_window(1080, 720, 'Colony Simulator')
-
 
 w = World.World(0, 0, 500, 500)
 w.colonies.append(Colony.Colony('meymanat', pr.YELLOW, pr.Color(253, 249, 0, 150), w))
@@ -19,8 +17,6 @@ while not pr.window_should_close():
     pr.begin_drawing()
     pr.clear_background(pr.BLACK)
 
-    
-
     if pr.is_mouse_button_pressed(0):
         colon = choice(w.colonies)
         x, y = w.random_pos()
@@ -31,14 +27,7 @@ while not pr.window_should_close():
         Person = Human.Human(x, y, 90, False, colon)
         colon.add_people(Person)
 
-    
-
-    # print(round(new_time - old_time, 2))
-    
-
-    if round(new_time - old_time, 2) >= 0.01:
-
-        
+    if round(new_time - old_time, 2) >= 0.01:        
         for colony in w.colonies:     
             colony.update()
 
