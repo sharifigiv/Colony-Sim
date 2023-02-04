@@ -45,3 +45,10 @@ class World:
             random_y = randint(0, self.height)
 
         return random_x, random_y
+
+
+    def update_area(self, Area, sender):
+        for colony in self.colonies:
+            if colony != sender:
+                if Area in colony.area:
+                    colony.area.remove(Area)
