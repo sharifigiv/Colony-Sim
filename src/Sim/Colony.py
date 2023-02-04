@@ -8,13 +8,20 @@ class Colony:
         self.people = []
         self.world = world
 
+        self.Started = True
+
     def add_people(self, Person):
         self.people.append(Person)
         self.world.new_people(Person)
 
         Person.colony = self
+        self.Started = False
 
     def update(self):
+        if len(self.people) == 0 and not self.Started:
+            print(f"{self.name} destroyed!")
+            self.world.colonies.remove(self)
+
         for person in self.people:
             direction = choice([1, 2, 3, 4])
             person.update()
